@@ -82,3 +82,8 @@ responding within a 5 minute timeout, but may work in future.
 - [x] /v2/enterprise/noise/quick/{ip}
 - [x] /v2/enterprise/noise/multi/quick
 
+
+TODO:
+- [ ] Unit Tests
+- [ ] update not-responding endpoints
+- [ ] add data types for endpoints

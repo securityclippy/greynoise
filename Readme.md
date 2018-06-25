@@ -1,9 +1,49 @@
-### Unofficia Greynoise.io client
+# Unofficial Greynoise.io go client
+
+This is a basic go client for the greynoise v2 api.  Most endpoints are functional,
+but several are still to be implemented on they greynoise platform.
+
+to get started:
+
+```bash
+go get -u github.com/securityclippy/greynoise
+```
+
+`main.go`
+
+holds some basic examples of the endpoints and their associated functions
+
+### basic usage:
+
+```
+package main
+
+import (
+	"github.com/securityclippy/greynoise/client"
+	"github.com/securityclippy/greynoise/conf"
+)
+
+func main() {
+	config, err := conf.ReadConfig("config.json")
+	if err != nil {
+		logger.Fatal(err)
+	}
+	greyNoise := client.NewClient(config)
+
+	// call endpoint call
+	resp, err := greyNoise.MetaPing()
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    // parse response body from *http.response returned by endpoints
+    body, err := greyNoise.ParseResponse(resp)
+    // print out response body
+    log.Info(string(body))
+```
 
 
 ### endpoint implementation Status
-
-- [ ]
 
 - [x] /v2/meta/ping
 - [x] /v2/research/time_series/scan/{protoco}/{port} __NOTE: currently not responding__

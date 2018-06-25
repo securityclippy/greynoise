@@ -45,32 +45,38 @@ func main() {
 
 ### endpoint implementation Status
 
+#### NOTE: as noted by greynoise.io...
+Many endpoints may be subject to change, not working fully or not yet implemented.
+Endpoints are a best-effort right now, but work unless noted.  Some are currently not
+responding within a 5 minute timeout, but may work in future.
+
+
 - [x] /v2/meta/ping
 - [x] /v2/research/time_series/scan/{protoco}/{port} __NOTE: currently not responding__
-- [ ] /v2/research/time_series/http/path - (Greynoise - Not Yet Implemented)
-- [ ] /v2/research/time_series/http/useragent - (Greynoise - Not Yet Implemented)
+- [ ] /v2/research/time_series/http/path - __(Greynoise - Not Yet Implemented)__
+- [ ] /v2/research/time_series/http/useragent - __(Greynoise - Not Yet Implemented)__
 - [x] /v2/research/tag/list
 - [x] /v2/research/tag/combination
 - [x] /v2/research/tag/single
 - [x] /v2/research/ip/{ip}
-- [x] /v2/research/raw/scan/{protocol}/{port} - (Greynoise - Not Yet Implemented)
-- [x] /v2/research/raw/ip/{ip} - (Greynoise - Not Yet Implemented)
-- [ ] /v2/research/raw/http/path (Greynoise - Not Yet Implemented)
-- [ ] /v2/research/raw/http/useragent (Greynoise - Not Yet Implemented)
+- [x] /v2/research/raw/scan/{protocol}/{port} - __(Greynoise - Not Yet Implemented)__
+- [x] /v2/research/raw/ip/{ip} - __(Greynoise - Not Yet Implemented)__
+- [ ] /v2/research/raw/http/path __(Greynoise - Not Yet Implemented)__
+- [ ] /v2/research/raw/http/useragent __(Greynoise - Not Yet Implemented)__
 - [x] /v2/research/stats/top/scan
 - [x] /v2/research/stats/top/http/path
 - [x] /v2/research/stats/top/http/useragent
 - [x] /v2/research/stats/top/org
 - [x] /v2/research/stats/top/asn
 - [x] /v2/research/stats/top/rdns
-- [x] /v2/research/search/org __NOTE: Timing out for all orgs__
+- [x] /v2/research/search/org __NOTE: currently not responding__
 - [ ] /v2/research/search/org/historical
-- [x] /v2/research/actors __NOTE: Timing out__
+- [x] /v2/research/actors __NOTE: currently not responding__
 - [x] /v2/infections/cidr/{block}/{bits}
-- [x] /v2/infections/asn/{asn} __NOTE: timing out__
-- [x] /v2/infections/search/org __NOTE: timing out__
+- [x] /v2/infections/asn/{asn} __NOTE: currently not responding__
+- [x] /v2/infections/search/org __NOTE: currently not responding__
 - [x] /v2/research/scanners/cidr/{block}/{bits}
-- [x] /v2/research/scanners/asn/{asn} __NOTE: timing out__
+- [x] /v2/research/scanners/asn/{asn} __NOTE: currently not responding__
 - [x] /v2/research/ja3/fingerprint/{fingerprint}
 - [x] /v2/research/ja3/ip/{ip}
 - [x] /v2/enterprise/noise/quick/{ip}

@@ -13,8 +13,12 @@ import (
 )
 
 var (
-	logger = logrus.WithField("client", "client")
+	logger = logrus.WithField("GreyNoise", "client")
 )
+
+func init() {
+	logger.Level = logrus.InfoLevel
+}
 
 
 type Client struct {
@@ -56,7 +60,7 @@ func (c Client) newRequest(method, url string, body io.Reader) (*http.Request, e
 }
 
 
-func (c Client) buildURL(params map[string]string, paths ...string) string {
+func (c Client) BuildURL(params map[string]string, paths ...string) string {
 	reqURL := c.Endpoint
 	urlPath := path.Join(paths...)
 	reqURL = reqURL + urlPath
@@ -69,11 +73,11 @@ func (c Client) buildURL(params map[string]string, paths ...string) string {
 		reqURL = fmt.Sprintf("%s?%s", reqURL, q.Encode())
 
 	}
-	logger.Infof("reqURL: %s", reqURL)
+	logger.Debugf("reqURL: %s", reqURL)
 	return reqURL
 }
 
-func (c Client) doRequest(method, url string, body io.Reader) (*http.Response, error) {
+func (c Client) DoRequest(method, url string, body io.Reader) (*http.Response, error) {
 	req, err := c.newRequest(method, url, body)
 	if err != nil {
 		return nil, err

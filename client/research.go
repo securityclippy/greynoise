@@ -37,7 +37,7 @@ var (
 )
 
 func (c Client) ResearchTagList() (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Research, Tag, List), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Tag, List), nil)
 }
 
 
@@ -63,7 +63,7 @@ func (c Client) ResearchTagCombination(includeTags, excludeTags []string, offset
 		return nil, err
 	}
 	logger.Infof("body: %s", string(js))
-	return c.doRequest("GET", c.buildURL(nil, Research, Tag, Combination), bytes.NewReader(js))
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Tag, Combination), bytes.NewReader(js))
 }
 
 
@@ -81,49 +81,49 @@ func (c Client) ResearchTagSingle(tag string, offset int) (*http.Response, error
 	}
 	if offset > 0 {
 		params := map[string]string{"offset": strconv.Itoa(offset)}
-		return c.doRequest("GET", c.buildURL(params, Research, Tag, Single), bytes.NewReader(js))
+		return c.DoRequest("GET", c.BuildURL(params, Research, Tag, Single), bytes.NewReader(js))
 	}
-	return c.doRequest("GET", c.buildURL(nil, Research, Tag, Single), bytes.NewReader(js))
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Tag, Single), bytes.NewReader(js))
 }
 
 func (c Client) ResearchTimeSeriesScan(protocol string, port int) (*http.Response,  error) {
-	return c.doRequest("GET", c.buildURL(nil, Research, TimeSeries, Scan, protocol, strconv.Itoa(port)),nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, TimeSeries, Scan, protocol, strconv.Itoa(port)),nil)
 }
 
 func (c Client) ResearchIP(ipAddress string) (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Research,  IP, ipAddress), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research,  IP, ipAddress), nil)
 }
 
 func (c Client) ResearchRaw(protocol string, port int) (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Research, Raw, Scan, protocol, strconv.Itoa(port)), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Raw, Scan, protocol, strconv.Itoa(port)), nil)
 }
 
 func (c Client) ResearchRawIP(ipAddress string) (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Research, Raw, IP, ipAddress), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Raw, IP, ipAddress), nil)
 }
 
 func (c Client) ResearchStatsTopScan() (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Research, Stats, Top, Scan), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Stats, Top, Scan), nil)
 }
 
 func (c Client) ResearchStatsTopHTTPPath() (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Research, Stats, Top, HTTP, Path), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Stats, Top, HTTP, Path), nil)
 }
 
 func (c Client) ResearchStatsTopHTTPUserAgent() (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Research, Stats, Top, HTTP, UserAgent), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Stats, Top, HTTP, UserAgent), nil)
 }
 
 func (c Client) ResearchStatsTopOrg() (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Research, Stats, Top, Org), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Stats, Top, Org), nil)
 }
 
 func (c Client) ResearchStatsTopASN() (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Research, Stats, Top, ASN), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Stats, Top, ASN), nil)
 }
 
 func (c Client) ResearchStatsTopRDNS() (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Research, Stats, Top,  RDNS), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Stats, Top,  RDNS), nil)
 }
 
 func (c Client) ResearchSearchOrg(orgName string) (*http.Response, error) {
@@ -137,28 +137,28 @@ func (c Client) ResearchSearchOrg(orgName string) (*http.Response, error) {
 	if err != nil {
 		return nil, err
 	}
-	return c.doRequest("GET",  c.buildURL(nil, Research, Search, Org), bytes.NewReader(js))
+	return c.DoRequest("GET",  c.BuildURL(nil, Research, Search, Org), bytes.NewReader(js))
 }
 
 func (c Client) ResearchActors()  (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Research, Actors), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Actors), nil)
 }
 
 func (c Client) ResearchScannersCIDRBlock(cidrBlock string) (*http.Response, error) {
 	s := strings.Split(cidrBlock, "/")
 	block := s[0]
 	bits := s[1]
-	return c.doRequest("GET", c.buildURL(nil, Research, Scanners, CIDR, block, bits), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Scanners, CIDR, block, bits), nil)
 }
 
 func (c Client) ResearchScannersASN(asn string) (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Research, Scanners, ASN, asn), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Scanners, ASN, asn), nil)
 }
 
 func (c Client) ResearchJa3Fingerprint(fingerprint string) (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Research, Ja3, Fingerprint, fingerprint), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Ja3, Fingerprint, fingerprint), nil)
 }
 
 func (c Client) ResearchJa3IP(ipAddress string) (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Research, Ja3, IP, ipAddress), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Research, Ja3, IP, ipAddress), nil)
 }

@@ -15,7 +15,7 @@ var (
 
 
 func (c Client) EnterpriseNoiseQuick(ipAddress string) (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Enterprise, Noise, Quick, ipAddress), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Enterprise, Noise, Quick, ipAddress), nil)
 }
 
 func (c Client) EnterpriseNoiseMultiQuick(ipAddresses []string) (*http.Response, error) {
@@ -29,5 +29,5 @@ func (c Client) EnterpriseNoiseMultiQuick(ipAddresses []string) (*http.Response,
 	if err != nil {
 		return nil, err
 	}
-	return c.doRequest("GET", c.buildURL(nil, Enterprise, Noise, Multi, Quick), bytes.NewReader(js))
+	return c.DoRequest("GET", c.BuildURL(nil, Enterprise, Noise, Multi, Quick), bytes.NewReader(js))
 }

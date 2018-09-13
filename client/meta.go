@@ -8,5 +8,5 @@ var (
 )
 
 func (c Client) MetaPing() (*http.Response, error) {
-	return c.doRequest("GET", c.buildURL(nil, Meta, Ping), nil)
+	return c.DoRequest("GET", c.BuildURL(nil, Meta, Ping), nil)
 }
